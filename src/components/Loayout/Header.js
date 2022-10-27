@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const Header = () => {
+const Header = props => {
   return (
-    <View>
-      <Text>Header</Text>
+    <View style={{ marginLeft: 10 }}>
+      <Text style={{ fontWeight: "bold", fontSize: 16 }}>{props.name}</Text>
     </View>
   );
 };

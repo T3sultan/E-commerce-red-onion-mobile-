@@ -1,6 +1,9 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+//firebase config key setup
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
+//your web app's firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAOkvKjsCProZspt_gHlrOje2FLRfXAhV8",
   authDomain: "e-commerce-red-onion.firebaseapp.com",
@@ -10,6 +13,7 @@ const firebaseConfig = {
   appId: "1:108442353081:web:d79eeefa942708b42bca68",
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-export default auth;
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+export { firebase };
