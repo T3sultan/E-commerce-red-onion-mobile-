@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { firebase } from "./config";
-import Login from "./src/screens/auth/Login/Login";
 import Header from "./src/components/Loayout/Header";
 import Register from "./src/screens/auth/Register/Register";
 import Home from "./src/screens/app/Home/Home";
 import { useFonts } from "expo-font";
 import { colors } from "./src/theme";
+import Login from "./src/screens/auth/Login/Login";
 const Stack = createStackNavigator();
 const App = () => {
   const [fontsLoaded] = useFonts({
