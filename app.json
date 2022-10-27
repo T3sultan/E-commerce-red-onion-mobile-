@@ -1,5 +1,8 @@
 {
   "expo": {
+    "packagerOpts": {
+      "sourceExts": ["cjs"]
+    },
     "name": "e-commerce-red-onion",
     "slug": "e-commerce-red-onion",
     "version": "1.0.0",
@@ -14,9 +17,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

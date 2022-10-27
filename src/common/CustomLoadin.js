@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const App = () => {
+const CustomLoading = () => {
   return (
     <View>
-      <Text>App</Text>
+      <Text>CustomLoading</Text>
     </View>
   );
 };
 
-export default App;
+export default CustomLoading;
 
 const styles = StyleSheet.create({});
