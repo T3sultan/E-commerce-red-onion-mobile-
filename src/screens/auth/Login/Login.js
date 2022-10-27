@@ -1,4 +1,6 @@
 import {
+  Dimensions,
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -8,7 +10,10 @@ import {
 import React, { useState } from "react";
 import { firebase } from "../../../../config";
 import { useNavigation } from "@react-navigation/native";
-
+import { colors, fonts, spacing, typography } from "../../../theme";
+import CustomText from "../../../common/CustomText";
+const { width, height } = Dimensions.get("window");
+import login from "../../../../assets/logo_.png";
 const Login = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
@@ -24,14 +29,25 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <Text
+      <View
         style={{
-          fontSize: 26,
-          fontWeight: "bold",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Image resizeMode="contain" style={styles.login} source={login} />
+      </View>
+      <CustomText
+        style={{
+          fontSize: spacing[10],
+          fontFamily: typography.bold,
+          textAlign: "center",
+          color: colors.description,
+          marginTop: spacing[6],
         }}
       >
         Login
-      </Text>
+      </CustomText>
       <View style={{ marginTop: 30 }}>
         <TextInput
           style={styles.textInput}
@@ -41,6 +57,7 @@ const Login = () => {
           autoCorrect={false}
         />
         <TextInput
+          keyboardType="phone-pad"
           style={styles.textInput}
           placeholder="Password"
           onChangeText={password => setPassword(password)}
@@ -53,15 +70,28 @@ const Login = () => {
         style={styles.button}
         onPress={() => loginUser(email, password)}
       >
-        <Text style={{ fontWeight: "bold", fontSize: 22 }}>Login</Text>
+        <CustomText style={styles.text}>Login</CustomText>
       </TouchableOpacity>
       <TouchableOpacity
+        style={styles.account}
         onPress={() => navigation.navigate("Register")}
-        style={{ marginTop: 10 }}
       >
-        <Text style={{ fontWeight: "bold", fontSize: 14 }}>
-          Don't have an account? Register Now
-        </Text>
+        <CustomText
+          style={{
+            fontFamily: typography.baseBold,
+            color: colors.black,
+          }}
+        >
+          Don't have an account?{" "}
+          <CustomText
+            style={{
+              color: colors.green,
+              fontSize: fonts.size.subHeader,
+            }}
+          >
+            Register Now
+          </CustomText>{" "}
+        </CustomText>
       </TouchableOpacity>
     </View>
   );
@@ -70,24 +100,43 @@ const Login = () => {
 export default Login;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center", marginTop: 60 },
+  account: {
+    flex: 1,
+    justifyContent: "flex-end",
+    paddingBottom: spacing[2],
+    alignItems: "center",
+  },
+  container: {
+    flex: 1,
+
+    backgroundColor: colors.white,
+  },
   textInput: {
-    paddingTop: 20,
-    paddingBottom: 10,
-    width: 400,
-    fontSize: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: "#000",
-    marginBottom: 10,
-    textAlign: "center",
+    height: spacing[12],
+    borderColor: colors.description,
+    borderWidth: 0.25,
+    marginBottom: spacing[4],
+    borderRadius: 5,
+    padding: 10,
+    marginLeft: spacing[8],
+    marginRight: spacing[8],
   },
   button: {
-    marginTop: 20,
-    height: 50,
-    width: 250,
-    backgroundColor: "cyan",
-    alignItems: "center",
+    backgroundColor: colors.darkGrey,
+    marginTop: spacing[2],
     justifyContent: "center",
-    borderRadius: 30,
+    alignItems: "center",
+    height: spacing[12],
+    borderRadius: spacing[4],
+    marginLeft: spacing[8],
+    marginRight: spacing[8],
+  },
+  text: {
+    color: colors.white,
+    fontFamily: typography.bold,
+    fontSize: spacing[6],
+  },
+  login: {
+    width: "100%",
   },
 });

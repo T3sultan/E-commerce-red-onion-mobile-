@@ -7,10 +7,17 @@ import Login from "./src/screens/auth/Login/Login";
 import Header from "./src/components/Loayout/Header";
 import Register from "./src/screens/auth/Register/Register";
 import Home from "./src/screens/app/Home/Home";
-
+import { useFonts } from "expo-font";
+import { colors } from "./src/theme";
 const Stack = createStackNavigator();
-
 const App = () => {
+  const [fontsLoaded] = useFonts({
+    EncodedSansBold: require("./assets/fonts/EncodeSans-Bold.ttf"),
+    EncodedSansRegular: require("./assets/fonts/EncodeSans-Regular.ttf"),
+    MontserratBold: require("./assets/fonts/Montserrat-Bold.ttf"),
+    MontserratRegular: require("./assets/fonts/Montserrat-Regular.ttf"),
+  });
+
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
 
@@ -31,54 +38,30 @@ const App = () => {
           name="Login"
           component={Login}
           options={{
-            headerTitle: () => <Header name="Tipu" />,
+            headerShown: false,
             headerStyle: {
-              height: 150,
-              borderBottomLeftRadius: 50,
-              borderBottomRightRadius: 50,
-              backgroundColor: "#00e4d0",
-              shadowColor: "#000",
-              elevation: 25,
+              backgroundColor: colors.white,
             },
           }}
         />
+        <Stack.Screen name="Register" component={Register} />
+      </Stack.Navigator>
+    );
+  }
+
+  if (!fontsLoaded) {
+    return null;
+  } else {
+    return (
+      <Stack.Navigator>
         <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{
-            headerTitle: () => <Header name="Tipu" />,
-            headerStyle: {
-              height: 150,
-              borderBottomLeftRadius: 50,
-              borderBottomRightRadius: 50,
-              backgroundColor: "#00e4d0",
-              shadowColor: "#000",
-              elevation: 25,
-            },
-          }}
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     );
   }
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{
-          headerTitle: () => <Header name="Home" />,
-          headerStyle: {
-            height: 150,
-            borderBottomLeftRadius: 50,
-            borderBottomRightRadius: 50,
-            backgroundColor: "#00e4d0",
-            shadowColor: "#000",
-            elevation: 25,
-          },
-        }}
-      />
-    </Stack.Navigator>
-  );
 };
 
 export default () => {
