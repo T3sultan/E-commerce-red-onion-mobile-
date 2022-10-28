@@ -17,6 +17,8 @@ const colors = {
   description: "#666666",
   exploreButton: "#2980B9",
   orange: "#F2994A",
+  purple: "#a2d2ff",
+  purple2: "#bde0fe",
 };
 
 export default colors;

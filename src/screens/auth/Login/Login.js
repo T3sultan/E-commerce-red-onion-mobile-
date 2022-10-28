@@ -56,7 +56,6 @@ const Login = () => {
           autoCorrect={false}
         />
         <TextInput
-          keyboardType="phone-pad"
           style={styles.textInput}
           placeholder="Password"
           onChangeText={password => setPassword(password)}

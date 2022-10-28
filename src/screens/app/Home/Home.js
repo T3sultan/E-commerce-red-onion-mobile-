@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import { firebase } from "../../../../config";
 import CustomText from "../../../common/CustomText";
+import Header from "../../../components/Loayout/Header";
 
 const Home = () => {
   const [name, setName] = useState("");
@@ -20,11 +21,12 @@ const Home = () => {
       });
   }, []);
   return (
-    <View>
-      <CustomText>Home :{name.firstName}</CustomText>
-      <TouchableOpacity onPress={() => firebase.auth().signOut()}>
+    <View style={{ backgroundColor: "white", flex: 1 }}>
+      <Header name={name.firstName} onPress={() => firebase.auth().signOut()} />
+      {/* <CustomText>{name.firstName}</CustomText>
+      <TouchableOpacity>
         <Text>Sign out</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
