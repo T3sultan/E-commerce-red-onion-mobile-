@@ -43,7 +43,6 @@ const Login = () => {
           fontFamily: typography.bold,
           textAlign: "center",
           color: colors.description,
-          marginTop: spacing[6],
         }}
       >
         Login
@@ -87,6 +86,7 @@ const Login = () => {
             style={{
               color: colors.green,
               fontSize: fonts.size.subHeader,
+              fontFamily: typography.bold,
             }}
           >
             Register Now
